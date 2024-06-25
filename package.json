@@ -4,7 +4,7 @@
   "description": "Tokenizes hours of operation strings.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && mv ./src/HoursParser.js ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -1,7 +1,5 @@
 import { Shift, Time, TimeRange, MultipleTimeRanges, ParseStatus, HoursParser } from '../src/HoursParser';
 const dd = (...args: any) => console.debug(...args);
-const jstr = (...args: any) => JSON.stringify([...args], null, 2);
-const dds = (...args: any) => dd(jstr(...args));
 
 class StringTest {
   value: string;
@@ -55,10 +53,6 @@ function multi_range(
   );
   mtr.add(new TimeRange(new Time(s2h, s2m, s2shift), new Time(e2h, e2m, e2shift)));
   return mtr;
-}
-
-function trange(sh: number, sm: number, shift: Shift, eh: number, em: number, eshift: Shift): TimeRange {
-  return new TimeRange(new Time(sh, sm, shift), new Time(eh, em, eshift));
 }
 
 const patterns: Array<StringTest> = [

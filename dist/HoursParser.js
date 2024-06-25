@@ -1,9 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HoursParser = exports.MultipleTimeRanges = exports.TimeRange = exports.Time = void 0;
-const dd = (...args) => {
-    console.debug(...args);
-};
 class Time {
     constructor(h, m, s) {
         this.hour = 0;
@@ -228,11 +225,6 @@ class HoursParser {
         matches = this.input.match(/^\s?([0-9]{1,2}):([0-9]{1,2})\s?-\s?([0-9]{1,2}):([0-9]{1,2})(am|pm)\s?$/i);
         ++this.matchedAt; // 5
         if (matches) {
-            const startHour = Number(matches[1]);
-            let shift = 'pm';
-            if (startHour < 12) {
-                shift = 'am';
-            }
             this.times = new MultipleTimeRanges(new TimeRange(new Time(Number(matches[1]), Number(matches[2]), matches[5]), new Time(Number(matches[3]), Number(matches[4]), matches[5])));
             return 'ok';
         }
@@ -243,10 +235,6 @@ class HoursParser {
         matches = this.input.match(/^\s?([0-9]{1,2}):([0-9]{1,2})\s?-\s?([0-9]{1,2}):([0-9]{1,2})\s?(am|pm)\s?$/i);
         ++this.matchedAt; // 6
         if (matches) {
-            //let shift: Shift = 'pm';
-            //if (Number(matches[1]) < 12) {
-            //  shift = 'am';
-            //}
             this.times = new MultipleTimeRanges(new TimeRange(new Time(Number(matches[1]), Number(matches[2]), matches[5]), new Time(Number(matches[3]), Number(matches[4]), matches[5])));
             return 'ok';
         }

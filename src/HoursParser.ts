@@ -1,9 +1,5 @@
 export type Shift = 'am' | 'pm';
 
-const dd = (...args: any) => {
-  console.debug(...args);
-}
-
 export class Time {
   hour: number = 0;
   minute: number = 0;
@@ -246,11 +242,6 @@ export class HoursParser {
     matches = this.input.match(/^\s?([0-9]{1,2}):([0-9]{1,2})\s?-\s?([0-9]{1,2}):([0-9]{1,2})(am|pm)\s?$/i);
     ++this.matchedAt; // 5
     if (matches) {
-      const startHour: number = Number(matches[1]);
-      let shift: Shift = 'pm';
-      if (startHour < 12) {
-        shift = 'am';
-      }
       this.times = new MultipleTimeRanges(
         new TimeRange(
           new Time(Number(matches[1]), Number(matches[2]), matches[5]),
@@ -266,10 +257,6 @@ export class HoursParser {
     matches = this.input.match(/^\s?([0-9]{1,2}):([0-9]{1,2})\s?-\s?([0-9]{1,2}):([0-9]{1,2})\s?(am|pm)\s?$/i);
     ++this.matchedAt; // 6
     if (matches) {
-      //let shift: Shift = 'pm';
-      //if (Number(matches[1]) < 12) {
-      //  shift = 'am';
-      //}
       this.times = new MultipleTimeRanges(
         new TimeRange(
           new Time(Number(matches[1]), Number(matches[2]), matches[5]),

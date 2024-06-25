@@ -2,8 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const HoursParser_1 = require("../src/HoursParser");
 const dd = (...args) => console.debug(...args);
-const jstr = (...args) => JSON.stringify([...args], null, 2);
-const dds = (...args) => dd(jstr(...args));
 class StringTest {
     constructor(value, mtr) {
         this.value = value;
@@ -38,9 +36,6 @@ function multi_range(sh, sm, shift, eh, em, eshift, s2h, s2m, s2shift, e2h, e2m,
     const mtr = new HoursParser_1.MultipleTimeRanges(new HoursParser_1.TimeRange(new HoursParser_1.Time(sh, sm, shift), new HoursParser_1.Time(eh, em, eshift)));
     mtr.add(new HoursParser_1.TimeRange(new HoursParser_1.Time(s2h, s2m, s2shift), new HoursParser_1.Time(e2h, e2m, e2shift)));
     return mtr;
-}
-function trange(sh, sm, shift, eh, em, eshift) {
-    return new HoursParser_1.TimeRange(new HoursParser_1.Time(sh, sm, shift), new HoursParser_1.Time(eh, em, eshift));
 }
 const patterns = [
     new StringTest('10:00AM-10:00PM', nt(10, 0, 'am', 10, 0, 'pm')),
